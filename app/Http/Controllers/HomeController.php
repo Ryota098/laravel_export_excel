@@ -18,21 +18,21 @@ class HomeController extends Controller
 
     public function index()
     {
+        $totalStudents = Student::all();
+        
+        return view('home', compact('totalStudents'));
+    }
+    
+    
+    public function export()
+    {
         $grade = 'CAST(grade AS DECIMAL) ASC';
         $class = 'CAST(class AS DECIMAL) ASC';
         $num = 'CAST(student_num AS DECIMAL) ASC';
         $students = Student::orderByRaw($grade)
             ->orderByRaw($class)
             ->orderByRaw($num)
-            ->get(); 
-        
-        return view('home', compact('students'));
-    }
-    
-    
-    public function export()
-    {
-        $students = Student::all();
+            ->get();
         
         return Excel::download(new StudentsDataExport($students), 'studentsData.xlsx');
     }
