@@ -16,18 +16,6 @@
             人
         </div>
         
-        <!--<div class="flex items-center justify-between my-6">-->
-        <!--    <form action="" class="flex items-center gap-4">-->
-        <!--        @csrf-->
-        <!--        <input type="file" name="student_file" accept=".xlsx, .xls, .csv" required><br>-->
-        <!--        <input type="submit" value="アップロード" class="bg-green-500 text-white py-3 px-5 font-bold hover:bg-opacity-75 cursor-pointer">   -->
-        <!--    </form>-->
-            
-        <!--    <a href="/export" class="inline-block bg-red-700 text-white py-3 px-5 font-bold hover:bg-opacity-75" onclick="return confirm('xlsxファイルをダウンロードしますか？')">-->
-        <!--        Export-->
-        <!--    </a>-->
-        <!--</div>-->
-
         <livewire:student-table />
 
     </div>

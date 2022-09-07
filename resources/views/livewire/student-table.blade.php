@@ -52,7 +52,7 @@
         @if ($checked)
             <div>   
                 <button type="button" onclick="confirm('選択中のデータをエクスポートしますか？') || event.stopImmediatePropagation()"
-                        wire:click="exportSelected()" class="inline-block outline-none bg-red-700 text-white py-3 px-5 font-bold hover:bg-opacity-75">
+                        wire:click="exportSelected()" class="inline-block outline-none bg-green-500 text-white py-3 px-5 font-bold hover:bg-opacity-75">
                     エクスポート 
                 </button> 
             </div>
@@ -64,7 +64,7 @@
             $totalStudents = DB::table('students')->get();
         @endphp
         <div class="font-bold mt-10">   
-            生徒数 {{ $totalStudents->count() }}人中 {{ count($checked) }}人を選択しています
+            生徒数 {{ $totalStudents->count() }}人中 <span class="text-blue-700">{{ count($checked) }}</span>人を選択しています
         </div>
     @endif
         

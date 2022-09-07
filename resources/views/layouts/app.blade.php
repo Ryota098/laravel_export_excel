@@ -26,15 +26,21 @@
                         Laravel Excel
                     </a>
                 </div>
-                <nav class="space-x-4 text-gray-100 text-sm sm:text-base font-bold">
+                <nav class="space-x-6 text-gray-100 text-sm sm:text-base font-bold">
                     @guest
                         <a class="no-underline hover:underline" href="{{ route('login') }}">{{ __('Login') }}</a>
                         @if (Route::has('register'))
                             <a class="no-underline hover:underline" href="{{ route('register') }}">{{ __('Register') }}</a>
                         @endif
                     @else
+                        <a href="{{ route('home') }}" class="no-underline hover:underline text-sm">
+                           エクスポート
+                        </a>
+                         <a href="{{ route('upload') }}" class="no-underline hover:underline text-sm">
+                           アップロード
+                        </a>
                         <a href="{{ route('logout') }}"
-                           class="no-underline hover:underline"
+                           class="no-underline hover:underline text-sm"
                            onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">ログアウト</a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">

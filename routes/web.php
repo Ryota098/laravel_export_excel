@@ -19,5 +19,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/export', [\App\Http\Controllers\HomeController::class, 'export'])->name('export');
+Route::get('/upload', [\App\Http\Controllers\HomeController::class, 'upload'])->name('upload');
+Route::post('/upload-file', [\App\Http\Controllers\HomeController::class, 'uploadExcelFile'])->name('upload-file');
+// Route::get('/export', [\App\Http\Controllers\HomeController::class, 'export'])->name('export');
 
