@@ -30,11 +30,11 @@ class SurveyData extends Component
     
     public function getSurveysProperty()
     {
-        return Survey::search($this->search)
+        return Survey::search($this->search)->get();
             // ->when($this->company, function($query) {
             //     $query->where('company', 'like', $this->company . '%');
             // })
-            ->paginate($this->paginate);
+            // ->paginate($this->paginate);
     }
     
     

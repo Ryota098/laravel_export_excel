@@ -54,7 +54,7 @@
                             </td>
     
                             <td class="text-sm sm:text-base p-4 border-b border-gray-100 text-[15px]">
-                               {{ $student->name }}
+                                {{ $student->name }}
                             </td>
                             
                             <td class="text-sm sm:text-base p-4 border-b border-gray-100 text-[15px]">

@@ -5,36 +5,12 @@ namespace App\Imports;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
-use Maatwebsite\Excel\Concerns\WithValidation;
+// use Maatwebsite\Excel\Concerns\WithValidation;
 use App\Models\Survey;
 
 
 class SurveyDataImport implements ToCollection, WithHeadingRow//, WithValidation
-{
-    // public function rules(): array
-    // {
-    //     return [
-    //         'name' => 'required|string',
-    //         'company' => 'required|string',
-    //         'about_company' => 'required|string',
-    //         'about_lifestyle' => 'required|string',
-    //         'about_coaching' => 'required|string',
-    //         'noticed' => 'required|string',
-    //     ];
-    // }
-    
-    // public function customValidationMessages()
-    // { 
-    //     return [
-    //         'name.required' => '名前が記入されていません',
-    //         'company.required' => '会社名が記入されていません',
-    //         'about_company.required' => '会社についてが記入されていません',
-    //         'about_lifestyle.required' => '自分についてが記入されていません',
-    //         'about_coaching.required' => 'コーチングについてが記入されていません',
-    //         'noticed.required' => '学んだこと、気づいたことが記入されていません',
-    //     ];
-    // }
-    
+{   
     public function collection(Collection $rows)
     {
         foreach ($rows as $row) {

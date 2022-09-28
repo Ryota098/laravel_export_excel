@@ -33,18 +33,15 @@
                             <a class="no-underline hover:underline" href="{{ route('register') }}">{{ __('Register') }}</a>
                         @endif
                     @else
-                        <a href="{{ route('home') }}" class="no-underline hover:underline text-sm">
-                           エクスポート
+                        <a href="{{ route('survey') }}" class="no-underline hover:underline text-sm">
+                            アンケート回答一覧
                         </a>
                         {{-- <a href="{{ route('upload') }}" class="no-underline hover:underline text-sm">
-                           インポート
+                            インポート
                         </a> --}}
-                        <a href="{{ route('upload-survey') }}" class="no-underline hover:underline text-sm">
-                           インポート
-                        </a>
                         <a href="{{ route('logout') }}"
-                           class="no-underline hover:underline text-sm"
-                           onclick="event.preventDefault();
+                            class="no-underline hover:underline text-sm"
+                            onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">ログアウト</a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
                             {{ csrf_field() }}
