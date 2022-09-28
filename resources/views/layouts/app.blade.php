@@ -36,8 +36,11 @@
                         <a href="{{ route('home') }}" class="no-underline hover:underline text-sm">
                            エクスポート
                         </a>
-                         <a href="{{ route('upload') }}" class="no-underline hover:underline text-sm">
-                           アップロード
+                        {{-- <a href="{{ route('upload') }}" class="no-underline hover:underline text-sm">
+                           インポート
+                        </a> --}}
+                        <a href="{{ route('upload-survey') }}" class="no-underline hover:underline text-sm">
+                           インポート
                         </a>
                         <a href="{{ route('logout') }}"
                            class="no-underline hover:underline text-sm"

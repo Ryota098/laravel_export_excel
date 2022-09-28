@@ -11,12 +11,13 @@
         @endif
         
         <div class="mt-2 mb-10 font-bold text-2xl">
-            合計生徒数
-            {{ $totalStudents->count() }}
-            人
+            合計データ数
+            {{ $totalSurveyData->count() }}
+            件
         </div>
         
-        <livewire:student-table />
+        {{-- <livewire:student-table /> --}}
+        <livewire:survey-data />
 
     </div>
 </main>

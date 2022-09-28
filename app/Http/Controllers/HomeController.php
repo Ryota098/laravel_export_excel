@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\StudentsDataExport;
 use App\Imports\StudentsImport;
+use App\Imports\SurveyDataImport;
 use App\Models\Student;
+use App\Models\Survey;
 
 
 class HomeController extends Controller
@@ -19,12 +21,19 @@ class HomeController extends Controller
 
     public function index()
     {
-        $totalStudents = Student::all();
+        // $totalStudents = Student::all();
         
-        return view('home', compact('totalStudents'));
+        // return view('home', compact('totalStudents'));
+        
+        $totalSurveyData = Survey::select(
+            'name', 'company', 'about_company', 'about_lifestyle', 'about_coaching', 'noticed', 'feedback', 'etc'
+        )->get();
+        
+        return view('home', compact('totalSurveyData'));
     }
     
     
+    // Students
     public function upload()
     {
         $students = Student::all();
@@ -32,10 +41,27 @@ class HomeController extends Controller
         return view('upload-data', compact('students'));
     }
     
-    
     public function uploadExcelFile(Request $request)
     {
         Excel::import(new StudentsImport, $request->file('student_file'));
+        
+        return redirect()->back();
+    }
+    
+    
+    // Survey Data
+    public function survey()
+    {
+        $surveys = Survey::select(
+            'name', 'company', 'about_company', 'about_lifestyle', 'about_coaching', 'noticed', 'feedback', 'etc'
+        )->get();
+        
+        return view('upload-survey-data', compact('surveys'));
+    }
+    
+    public function uploadSurveyFile(Request $request)
+    {
+        Excel::import(new SurveyDataImport, $request->file('survey_file'));
         
         return redirect()->back();
     }
