@@ -1,12 +1,11 @@
 <div class="w-full">
     <div class="flex flex-wrap items-center justify-between">
         <div class="flex items-center gap-10">
-            <div class="font-bold text-2xl">
+            <div class="font-bold text-xl">
                 データ数
                 {{ $surveys->count() }}
                 件
             </div>
-    
             <div class="w-80"> 
                 <div class="w-full flex items-center">
                     <input type="search" name="search" id="search" wire:model.debounce.500ms="search" 
@@ -17,20 +16,21 @@
             </div>
         </div>
 
-        <div class="">
-            <form action="{{ route('import-survey-file') }}" method="POST" enctype="multipart/form-data" class="flex items-center gap-4">
-                @csrf
-                <input type="file" name="survey_file" accept=".csv" required><br>
-                <button type="submit" class="bg-green-500 text-white py-3 w-36 font-bold hover:bg-opacity-75 cursor-pointer">
-                        インポートCSV
-                </button>   
-            </form>
-        </div>
+        <form action="{{ route('import-survey-file') }}" method="POST" enctype="multipart/form-data" class="flex items-center gap-2">
+            @csrf
+            <input type="hidden" name="questionnaire_id" value="{{ $questionnaire->id }}">
+            <input type="file" name="survey_file" accept=".csv" required><br>
+            <button type="submit" class="bg-green-500 text-white py-3 w-36 font-bold hover:bg-opacity-75 cursor-pointer">
+                インポート
+            </button>   
+        </form>
     </div>
     
     @if ($checked)
         @php
-            $totalData = DB::table('surveys')->get();
+            $totalData = DB::table('surveys')
+                ->where('questionnaire_id', $this->questionnaire->id)
+                ->get();
         @endphp
         <div class="mt-10 flex items-center justify-between">
             <div class="font-bold">   
