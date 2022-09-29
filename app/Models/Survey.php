@@ -10,6 +10,7 @@ class Survey extends Model
     use HasFactory;
     
     protected $fillable = [
+        'questionnaire_id',
         'name',
         'company',
         'about_company',

@@ -152,6 +152,7 @@ return [
         'grade' => '学年',
         'class' => '組',
         'student_num' => '番号',
+        'table_name' => 'テーブル名',
     ],
 
 ];

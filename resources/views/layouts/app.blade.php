@@ -14,6 +14,9 @@
     
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
     
     <livewire:styles />
 </head>
@@ -33,9 +36,12 @@
                             <a class="no-underline hover:underline" href="{{ route('register') }}">{{ __('Register') }}</a>
                         @endif
                     @else
-                        <a href="{{ route('survey') }}" class="no-underline hover:underline text-sm">
-                            アンケート回答一覧
+                        <a href="{{ route('questionnaire.create') }}" class="no-underline hover:underline text-sm">
+                            テーブル作成
                         </a>
+                        {{-- <a href="{{ route('survey') }}" class="no-underline hover:underline text-sm">
+                            アンケート回答一覧
+                        </a> --}}
                         {{-- <a href="{{ route('upload') }}" class="no-underline hover:underline text-sm">
                             インポート
                         </a> --}}

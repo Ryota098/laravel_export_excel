@@ -11,26 +11,33 @@ use App\Exports\SurveyDataExport;
 class SurveyData extends Component
 {
     use WithPagination;
+    public $questionnaire;
     public $paginate = 50;
     public $search = "";
     public $company = "";
     public $selectPage = false;
     public $checked = [];
-    
-    
+
+
+    public function mount($questionnaire)
+    {
+        $this->questionnaire = $questionnaire;
+    }
+
+
     public function render()
     {
-        // $this->dispatchBrowserEvent('scroll-top');
-        
         return view('livewire.survey-data', [
-            'surveys' => $this->surveys
+            'surveys' => $this->surveys->where('questionnaire_id', $this->questionnaire->id)
         ]);
     }
     
     
     public function getSurveysProperty()
     {
-        return Survey::search($this->search)->get();
+        return Survey::search($this->search)
+            ->where('questionnaire_id', $this->questionnaire->id)
+            ->get();
             // ->when($this->company, function($query) {
             //     $query->where('company', 'like', $this->company . '%');
             // })
@@ -41,7 +48,7 @@ class SurveyData extends Component
     public function updatedSelectPage($value)
     {
         if ($value) {
-            $this->checked = $this->surveys->pluck('id')->toArray();
+            $this->checked = $this->surveys->where('questionnaire_id', $this->questionnaire->id)->pluck('id')->toArray();
         } else {
             $this->checked = [];
         }

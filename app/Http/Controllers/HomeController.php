@@ -29,12 +29,14 @@ class HomeController extends Controller
 
     public function show()
     {
+        // $ee = Survey::all();
+        // dd($ee);
         $totalSurveyData = Survey::orderBy('created_at', 'DESC')->get();
         
         return view('survey-data', compact('totalSurveyData'));
     }
-    
-    
+
+
     // Students
     public function upload()
     {
@@ -42,7 +44,7 @@ class HomeController extends Controller
         
         return view('upload-data', compact('students'));
     }
-    
+
     public function uploadExcelFile(Request $request)
     {
         Excel::import(new StudentsImport, $request->file('student_file'));
@@ -52,21 +54,21 @@ class HomeController extends Controller
     
     
     // Survey Data
-    public function survey()
-    {
-        $surveys = Survey::select(
-            'name', 'company', 'about_company', 'about_lifestyle', 'about_coaching', 'noticed', 'feedback', 'etc'
-        )->get();
+    // public function survey()
+    // {
+    //     $surveys = Survey::select(
+    //         'name', 'company', 'about_company', 'about_lifestyle', 'about_coaching', 'noticed', 'feedback', 'etc'
+    //     )->get();
         
-        return view('import-survey-data', compact('surveys'));
-    }
-    
-    public function importSurveyFile(Request $request)
-    {
-        Excel::import(new SurveyDataImport, $request->file('survey_file'));
-        
-        return redirect()->back();
-    }
+    //     return view('import-survey-data', compact('surveys'));
+    // }
+
+    // public function importSurveyFile(Request $request)
+    // {
+    //     Excel::import(new SurveyDataImport, $request->file('survey_file'));
+
+    //     return redirect()->back();
+    // }
     
     
     // public function export()
