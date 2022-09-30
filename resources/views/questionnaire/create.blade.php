@@ -27,7 +27,7 @@
             </div>
             
             <div class="text-right">
-                <button class="bg-blue-500 rounded-sm py-2.5 px-8 text-white font-bold hover:opacity-80 transition-all">
+                <button class="bg-blue-500 focus:outline-none rounded-sm py-2.5 px-8 text-white font-bold hover:bg-opacity-75">
                     作成
                 </button>
             </div>

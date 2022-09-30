@@ -18,12 +18,10 @@ class SurveyData extends Component
     public $selectPage = false;
     public $checked = [];
 
-
     public function mount($questionnaire)
     {
         $this->questionnaire = $questionnaire;
     }
-
 
     public function render()
     {
@@ -31,8 +29,7 @@ class SurveyData extends Component
             'surveys' => $this->surveys->where('questionnaire_id', $this->questionnaire->id)
         ]);
     }
-    
-    
+
     public function getSurveysProperty()
     {
         return Survey::search($this->search)
@@ -43,8 +40,7 @@ class SurveyData extends Component
             // })
             // ->paginate($this->paginate);
     }
-    
-    
+
     public function updatedSelectPage($value)
     {
         if ($value) {
@@ -53,16 +49,23 @@ class SurveyData extends Component
             $this->checked = [];
         }
     }
-    
-    
+
+    public function isChecked($survey_id)
+    {
+        return in_array($survey_id, $this->checked);
+    }
+
     public function exportSelected()
     {
         return (new SurveyDataExport($this->checked))->download('SurveyData.csv');
     }
-    
-    
-    public function isChecked($survey_id)
+
+    public function deleteRecords()
     {
-        return in_array($survey_id, $this->checked);
+        Survey::whereKey($this->checked)->delete();
+        $this->checked = [];
+        $questionnaire = $this->questionnaire;
+
+        redirect(route('questionnaire.show', compact('questionnaire')))->with('status', '削除しました');
     }
 }

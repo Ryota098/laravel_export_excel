@@ -1,4 +1,5 @@
 <div class="w-full">
+
     <div class="flex flex-wrap items-center justify-between">
         <div class="flex items-center gap-10">
             <div class="font-bold text-xl">
@@ -20,7 +21,7 @@
             @csrf
             <input type="hidden" name="questionnaire_id" value="{{ $questionnaire->id }}">
             <input type="file" name="survey_file" accept=".csv" required><br>
-            <button type="submit" class="bg-green-500 text-white py-3 w-36 font-bold hover:bg-opacity-75 cursor-pointer">
+            <button type="submit" class="bg-green-500 focus:outline-none text-white py-3 w-36 font-bold hover:bg-opacity-75 cursor-pointer">
                 インポート
             </button>   
         </form>
@@ -37,16 +38,20 @@
                 データ数 {{ $totalData->count() }}中 <span class="text-red-600">{{ count($checked) }} </span>件を選択しています
             </div>
             @if ($checked)
-                <div>   
+                <div class="flex gap-2">   
                     <button type="button" onclick="confirm('選択中のデータをエクスポートしますか？') || event.stopImmediatePropagation()"
-                        wire:click="exportSelected()" class="inline-block outline-none bg-blue-500 text-white py-3 w-36 font-bold hover:bg-opacity-75">
+                        wire:click="exportSelected()" class="inline-block focus:outline-none bg-blue-500 text-white py-3 w-36 font-bold hover:bg-opacity-75">
                         エクスポート 
+                    </button> 
+                    <button type="button" onclick="confirm('選択中のデータを削除しますか？') || event.stopImmediatePropagation()"
+                        wire:click="deleteRecords()" class="inline-block focus:outline-none bg-red-500 text-white py-3 w-36 font-bold hover:bg-opacity-75">
+                        削除
                     </button> 
                 </div>
             @endif
         </div>
     @endif
-        
+
     <div class="overflow-x-auto my-10 h-screen">
         <table class="table-fixed w-full text-left">
             <thead class="sticky top-0">
