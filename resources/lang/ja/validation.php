@@ -146,9 +146,11 @@ return [
 
     'attributes' => [
         'name' => '名前',
+        'email' => 'メールアドレス',
+        'password' => 'パスワード',
+        'password_confirmation' => 'パスワード再入力',
         'school' => '学校',
         'school_name' => '学校名',
-        'email' => 'メールアドレス',
         'grade' => '学年',
         'class' => '組',
         'student_num' => '番号',
